@@ -12,7 +12,7 @@ export const getCoins = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const resp = await axios(url);
-      console.log(resp.data);
+      //  console.log(resp.data);
       return resp.data;
     } catch (error) {
       return rejectWithValue(error.resp.data);
@@ -23,13 +23,19 @@ export const getCoins = createAsyncThunk(
 export const coinsSlice = createSlice({
   name: 'coins',
   initialState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getCoins.fulfilled, (state, action) => {
       //  console.log(action.payload);
-      state.coinsList = action.payload;
-      console.log(state.coinsList);
+      const newState = { ...state, coinsList: action.payload };
+      //  console.log(newState);
+      return newState;
+      //  state.coinsList = action.payload;
+      /* return {
+        ...state,
+        coinsList: action.payload,
+      }; */
+      //  console.log(state.coinsList);
     });
   },
 });

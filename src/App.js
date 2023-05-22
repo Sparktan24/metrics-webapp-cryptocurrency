@@ -1,6 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { getCoins } from './redux/coins/coinsSlice';
+import HomePage from './routes/HomePage';
+import CoinsDetail from './routes/CoinsDetail';
+import NavBar from './components/NavBar';
 
 function App() {
   const dispatch = useDispatch();
@@ -8,9 +12,15 @@ function App() {
     dispatch(getCoins());
   }, [dispatch]);
   return (
-    <div>
-      Hello
-    </div>
+    <>
+      <NavBar />
+
+      <Routes>
+        <Route path="HomePage" element={<HomePage />} />
+        <Route path="CoinsDetail" element={<CoinsDetail />} />
+        <Route path="/" element={<Navigate to="/HomePage" />} />
+      </Routes>
+    </>
   );
 }
 
