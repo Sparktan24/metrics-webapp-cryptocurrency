@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import {
-  filterCoin,
-  updateByValue,
-  updateByRank,
-  sortCoins,
-} from '../redux/coins/coinsSlice';
+import { filterCoin, sortByPrice, sortByRank } from '../redux/coins/coinsSlice';
 
 const HomePage = () => {
   const { coinsList } = useSelector((store) => store.coins);
@@ -25,23 +20,10 @@ const HomePage = () => {
 
   const orderCoins = (order) => {
     if (order === 'rank') {
-      dispatch(sortCoins());
+      dispatch(sortByRank());
     } else if (order === 'priceUsd') {
-      dispatch(updateByRank());
+      dispatch(sortByPrice());
     }
-  };
-
-  const orderByValue = () => {
-    const sortedCoins = coinsList
-      .slice()
-      .sort((a, b) => b.priceUsd - a.priceUsd);
-    dispatch(updateByValue(sortedCoins));
-  };
-
-  const orderByRank = () => {
-    const sortedCoins = coinsList.slice().sort((a, b) => b.rank - a.rank);
-    dispatch(updateByRank(sortedCoins));
-    //  console.log(sortedCoins);
   };
 
   return (
@@ -53,7 +35,8 @@ const HomePage = () => {
               to="/CoinsDetail"
               onClick={() => dispatch(filterCoin(coin.id))}
             >
-              Name: {coin.name} ID: {coin.id}
+              Rank: {coin.rank} {coin.name}
+              Price: {parseFloat(coin.priceUsd).toFixed(2)}
             </NavLink>
           </li>
         ))}

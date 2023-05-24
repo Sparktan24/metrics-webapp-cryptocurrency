@@ -5,6 +5,8 @@ const url = 'https://api.coincap.io/v2/assets';
 
 const initialState = {
   coinsList: [],
+  rankOrder: 'desc',
+  priceOrder: 'desc',
 };
 
 export const getCoins = createAsyncThunk(
@@ -39,18 +41,27 @@ export const coinsSlice = createSlice({
       }));
       return { ...state, coinsList: newState };
     },
-    updateByRank: (state) => {
-      const sortedCoins = state.coinsList
+    sortByRank: (state) => {
+      let sortedCoins;
+      if (state.rankOrder === 'desc') {
+        sortedCoins = state.coinsList.slice().sort((a, b) => a.rank - b.rank);
+        return { ...state, coinsList: sortedCoins, rankOrder: 'asc' };
+      }
+      sortedCoins = state.coinsList.slice().sort((a, b) => b.rank - a.rank);
+      return { ...state, coinsList: sortedCoins, rankOrder: 'desc' };
+    },
+    sortByPrice: (state) => {
+      let sortedCoins;
+      if (state.priceOrder === 'desc') {
+        sortedCoins = state.coinsList
+          .slice()
+          .sort((a, b) => a.priceUsd - b.priceUsd);
+        return { ...state, coinsList: sortedCoins, priceOrder: 'asc' };
+      }
+      sortedCoins = state.coinsList
         .slice()
         .sort((a, b) => b.priceUsd - a.priceUsd);
-      return { ...state, coinsList: sortedCoins };
-    },
-    sortCoins: (state) => {
-      const sortedCoins = state.coinsList
-        .slice()
-        .sort((a, b) => b.rank - a.rank);
-      //  console.log(sortedCoins.name);
-      return { ...state, coinsList: sortedCoins };
+      return { ...state, coinsList: sortedCoins, priceOrder: 'desc' };
     },
   },
   extraReducers: (builder) => {
@@ -63,10 +74,5 @@ export const coinsSlice = createSlice({
 
 export default coinsSlice.reducer;
 
-export const {
-  filterCoin,
-  resetCoins,
-  updateByValue,
-  updateByRank,
-  sortCoins,
-} = coinsSlice.actions;
+export const { filterCoin, resetCoins, sortByRank, sortByPrice } =
+  coinsSlice.actions;
