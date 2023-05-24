@@ -1,6 +1,7 @@
 /* eslint-disable arrow-body-style */
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import '../styles/coinsDetail.css';
 
 const CoinsDetail = () => {
   const { coinsList } = useSelector((store) => store.coins);
@@ -16,8 +17,8 @@ const CoinsDetail = () => {
   }
   return (
     <div>
-      <table>
-        <tbody>
+      <table className="details-table">
+        <tbody className="details-table-body">
           <tr>
             <td>{activeCoin[0].name}</td>
           </tr>

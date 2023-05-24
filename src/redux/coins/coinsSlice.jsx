@@ -39,6 +39,19 @@ export const coinsSlice = createSlice({
       }));
       return { ...state, coinsList: newState };
     },
+    updateByRank: (state) => {
+      const sortedCoins = state.coinsList
+        .slice()
+        .sort((a, b) => b.priceUsd - a.priceUsd);
+      return { ...state, coinsList: sortedCoins };
+    },
+    sortCoins: (state) => {
+      const sortedCoins = state.coinsList
+        .slice()
+        .sort((a, b) => b.rank - a.rank);
+      //  console.log(sortedCoins.name);
+      return { ...state, coinsList: sortedCoins };
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getCoins.fulfilled, (state, action) => {
@@ -50,4 +63,10 @@ export const coinsSlice = createSlice({
 
 export default coinsSlice.reducer;
 
-export const { filterCoin, resetCoins } = coinsSlice.actions;
+export const {
+  filterCoin,
+  resetCoins,
+  updateByValue,
+  updateByRank,
+  sortCoins,
+} = coinsSlice.actions;
