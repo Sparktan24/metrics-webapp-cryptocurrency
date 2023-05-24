@@ -35,17 +35,24 @@ const HomePage = () => {
               to="/CoinsDetail"
               onClick={() => dispatch(filterCoin(coin.id))}
             >
-              {`Rank: ${coin.rank} ${coin.name}
-              Price: ${parseFloat(coin.priceUsd).toFixed(2)}`}
+              Rank:
+              {coin.rank}
+              <br />
+              {coin.name}
+              <br />
+              Price:
+              $
+              {parseFloat(coin.priceUsd).toFixed(2)}
             </NavLink>
           </li>
         ))}
       </ul>
 
-      <div>
+      <div className="page-buttons-container">
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index + 1}
+            className="btn-page"
             type="button"
             onClick={() => handlePageChange(index + 1)}
             disabled={currentPage === index + 1}
@@ -54,7 +61,7 @@ const HomePage = () => {
           </button>
         ))}
       </div>
-      <div>
+      <div className="order-buttons-container">
         <button
           className="btn"
           type="button"

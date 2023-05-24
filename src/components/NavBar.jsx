@@ -13,6 +13,7 @@ const NavBar = () => {
         </NavLink>
         {/* <NavLink to="/CoinsDetail">CoinDetails</NavLink> */}
       </div>
+      <span className="nav-bar-title">Top Cryptocurrencies</span>
     </nav>
   );
 };

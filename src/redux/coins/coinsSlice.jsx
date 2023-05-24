@@ -74,5 +74,9 @@ export const coinsSlice = createSlice({
 
 export default coinsSlice.reducer;
 
-export const { filterCoin, resetCoins, sortByRank, sortByPrice } =
-  coinsSlice.actions;
+export const {
+  filterCoin,
+  resetCoins,
+  sortByRank,
+  sortByPrice,
+} = coinsSlice.actions;

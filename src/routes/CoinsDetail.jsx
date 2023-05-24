@@ -16,7 +16,7 @@ const CoinsDetail = () => {
     return <Navigate to="/HomePage" />;
   }
   return (
-    <div>
+    <div className="details-container">
       <table className="details-table">
         <tbody className="details-table-body">
           <tr>
