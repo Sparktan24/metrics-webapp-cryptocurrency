@@ -27,16 +27,16 @@ const HomePage = () => {
   };
 
   return (
-    <div>
-      <ul>
+    <div className="home-page-wrapper">
+      <ul className="grid-container">
         {currentItems.map((coin) => (
-          <li key={coin.id}>
+          <li key={coin.id} className="li-home-page">
             <NavLink
               to="/CoinsDetail"
               onClick={() => dispatch(filterCoin(coin.id))}
             >
-              Rank: {coin.rank} {coin.name}
-              Price: {parseFloat(coin.priceUsd).toFixed(2)}
+              {`Rank: ${coin.rank} ${coin.name}
+              Price: ${parseFloat(coin.priceUsd).toFixed(2)}`}
             </NavLink>
           </li>
         ))}
@@ -55,10 +55,18 @@ const HomePage = () => {
         ))}
       </div>
       <div>
-        <button type="button" onClick={() => orderCoins('priceUsd')}>
+        <button
+          className="btn"
+          type="button"
+          onClick={() => orderCoins('priceUsd')}
+        >
           Order by Price
         </button>
-        <button type="button" onClick={() => orderCoins('rank')}>
+        <button
+          className="btn"
+          type="button"
+          onClick={() => orderCoins('rank')}
+        >
           Order by Rank
         </button>
       </div>
