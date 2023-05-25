@@ -70,7 +70,7 @@ This app fetches data from [API](https://docs.coincap.io/).
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo](Coming-soon)
+- [Live Demo](https://metrics-cryptocurrency.netlify.app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
