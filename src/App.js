@@ -11,6 +11,7 @@ function App() {
   useEffect(() => {
     dispatch(getCoins());
   }, [dispatch]);
+
   return (
     <>
       <NavBar />
