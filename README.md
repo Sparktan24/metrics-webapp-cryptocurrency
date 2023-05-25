@@ -37,6 +37,7 @@ This app fetches data from [API](https://docs.coincap.io/).
 ## Mobile
 
 <img src="./Screens/HomePage.png" alt="HomePage screenshot" width="200">
+<img src="./Screens/DetailsPage.png" alt="DetailsPage screenshot" width="200">
 
 
 ## 🛠 Built With <a name="built-with"></a>
