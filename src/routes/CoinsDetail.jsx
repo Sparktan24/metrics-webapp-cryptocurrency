@@ -2,46 +2,77 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import '../styles/coinsDetail.css';
+import bitcoinLogo from '../styles/bitcoin-logo.png';
 
 const CoinsDetail = () => {
   const { coinsList } = useSelector((store) => store.coins);
-  //  console.log(coinsList);
   const activeCoin = coinsList.filter((coin) => coin.display);
-  //  console.log(coinsList);
-  //  console.log(activeCoin[0]);
-  //  console.log(activeCoin.id);
-  //  console.log(typeof activeCoin[0].changePercent24Hr);
-  if (!activeCoin[0]) {
+  const coin = activeCoin[0];
+
+  if (!coin) {
     // If there is no active coin, redirect to the homepage
     return <Navigate to="/HomePage" />;
   }
+  const handleFormatNumber = (num) => {
+    return (parseFloat(num).toFixed(2)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
   return (
     <div className="details-container">
       <table className="details-table">
         <tbody className="details-table-body">
           <tr>
-            <td>{activeCoin[0].name}</td>
-          </tr>
-          <tr>
-            <td>
-              Current Price: ${activeCoin[0].priceUsd}+
-              {parseFloat(activeCoin[0].changePercent24Hr).toFixed(2)}
+            <td className="name-format">
+              Name:
+              &nbsp;
+              <span className="details-coin-name">{coin.name}</span>
+              <span className="to-right">{coin.symbol}</span>
             </td>
           </tr>
           <tr>
-            <td>Rank: {activeCoin[0].rank}</td>
+            <td>
+              Current Price: $
+              &nbsp;
+              {handleFormatNumber(coin.priceUsd)}
+              &nbsp;
+              {handleFormatNumber(coin.changePercent24Hr)}
+              % last 24Hrs
+            </td>
           </tr>
           <tr>
-            <td>Market cap: ${activeCoin[0].marketCapUsd}</td>
+            <td>
+              Rank:
+              &nbsp;
+              {coin.rank}
+            </td>
           </tr>
           <tr>
-            <td>Supply: ${activeCoin[0].supply}</td>
+            <td>
+              Market cap: &nbsp;$
+              {handleFormatNumber(coin.marketCapUsd)}
+            </td>
           </tr>
           <tr>
-            <td>Max supply: ${activeCoin[0].maxSupply}</td>
+            <td>
+              Actual Supply: &nbsp;$
+              {handleFormatNumber(coin.supply)}
+              {/* {(parseFloat(coin.supply).toFixed(2)).replace(/\B(?=(\d{3})+(?!\d))/g, ',')} */}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Max supply: &nbsp;$
+              {handleFormatNumber(coin.maxSupply)}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Explorer: &nbsp;
+              {coin.explorer}
+            </td>
           </tr>
         </tbody>
       </table>
+      <img src={bitcoinLogo} className="image-details" alt="bitcoin logo" />
     </div>
   );
 };

@@ -131,10 +131,13 @@ body {
   background-color: #567ec8;
   display: flex;
   flex-direction: column;
+  /* background-image: url("./styles/bitcoin-logo.png"); */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .details-table-body tr{
-  padding: 1rem 0;
+  padding: 1rem 1rem;
 }
 
 .details-table-body tr:nth-child(even){
@@ -145,4 +148,22 @@ body {
 .details-table-body tr:nth-child(odd){
   background-color: #7596d5;
   border-radius: 5px;
+}
+
+.details-coin-name {
+  text-transform: uppercase;
+}
+
+.to-right {
+  margin-left: auto;
+}
+
+.name-format {
+  display: flex;
+}
+
+.image-details {
+  height: 22rem;
+  filter: brightness(67%) saturate(100%) hue-rotate(194deg);
+  width: 22rem;
 }
