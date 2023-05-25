@@ -168,7 +168,7 @@ To deploy this project in a local enviroment, you will have to run:
 
 ## :movie_camera: Project Presentation <a name="project-presentation"></a>
 
-- [Presentation](Pending)
+- [Presentation](https://www.loom.com/share/e6e2d2f11eed444da16091e7165de354)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
