@@ -8,9 +8,49 @@ Object {
       <div
         class="home-page-wrapper"
       >
+        <main>
+          <ul
+            class="grid-container"
+          />
+        </main>
+        <footer
+          class="footer"
+        >
+          <div
+            class="page-buttons-container"
+          />
+          <div
+            class="order-buttons-container"
+          >
+            <button
+              class="btn"
+              type="button"
+            >
+              Order by Price
+            </button>
+            <button
+              class="btn"
+              type="button"
+            >
+              Order by Rank
+            </button>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="home-page-wrapper"
+    >
+      <main>
         <ul
           class="grid-container"
         />
+      </main>
+      <footer
+        class="footer"
+      >
         <div
           class="page-buttons-container"
         />
@@ -30,35 +70,7 @@ Object {
             Order by Rank
           </button>
         </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="home-page-wrapper"
-    >
-      <ul
-        class="grid-container"
-      />
-      <div
-        class="page-buttons-container"
-      />
-      <div
-        class="order-buttons-container"
-      >
-        <button
-          class="btn"
-          type="button"
-        >
-          Order by Price
-        </button>
-        <button
-          class="btn"
-          type="button"
-        >
-          Order by Rank
-        </button>
-      </div>
+      </footer>
     </div>
   </div>,
   "debug": [Function],

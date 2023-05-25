@@ -11,7 +11,6 @@ const HomePage = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = coinsList.slice(indexOfFirstItem, indexOfLastItem);
-  //  console.log(coins); //  ADD ONCLICK TARGET TO SHOW ONLY THAT INFO
   const totalPages = Math.ceil(coinsList.length / itemsPerPage);
 
   const handlePageChange = (pageNumber) => {
@@ -28,58 +27,61 @@ const HomePage = () => {
 
   return (
     <div className="home-page-wrapper">
-      <ul className="grid-container">
-        {currentItems.map((coin) => (
-          <li key={coin.id} className="li-home-page">
-            <NavLink
-              to="/CoinsDetail"
-              onClick={() => dispatch(filterCoin(coin.id))}
+      <main>
+        <ul className="grid-container">
+          {currentItems.map((coin) => (
+            <li key={coin.id} className="li-home-page">
+              <NavLink
+                to="/CoinsDetail"
+                onClick={() => dispatch(filterCoin(coin.id))}
+              >
+                Rank:
+                {coin.rank}
+                <br />
+                <span className="home-coin-name">
+                  {coin.name}
+                </span>
+                <br />
+                Price:
+                $
+                {parseFloat(coin.priceUsd).toFixed(2)}
+                usd
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </main>
+      <footer className="footer">
+        <div className="page-buttons-container">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              className="btn-page"
+              type="button"
+              onClick={() => handlePageChange(index + 1)}
+              disabled={currentPage === index + 1}
             >
-              Rank:
-              {coin.rank}
-              <br />
-              <span className="home-coin-name">
-                {coin.name}
-              </span>
-              <br />
-              Price:
-              $
-              {parseFloat(coin.priceUsd).toFixed(2)}
-              usd
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-
-      <div className="page-buttons-container">
-        {Array.from({ length: totalPages }, (_, index) => (
+              {index + 1}
+            </button>
+          ))}
+        </div>
+        <div className="order-buttons-container">
           <button
-            key={index + 1}
-            className="btn-page"
+            className="btn"
             type="button"
-            onClick={() => handlePageChange(index + 1)}
-            disabled={currentPage === index + 1}
+            onClick={() => orderCoins('priceUsd')}
           >
-            {index + 1}
+            Order by Price
           </button>
-        ))}
-      </div>
-      <div className="order-buttons-container">
-        <button
-          className="btn"
-          type="button"
-          onClick={() => orderCoins('priceUsd')}
-        >
-          Order by Price
-        </button>
-        <button
-          className="btn"
-          type="button"
-          onClick={() => orderCoins('rank')}
-        >
-          Order by Rank
-        </button>
-      </div>
+          <button
+            className="btn"
+            type="button"
+            onClick={() => orderCoins('rank')}
+          >
+            Order by Rank
+          </button>
+        </div>
+      </footer>
     </div>
   );
 };
