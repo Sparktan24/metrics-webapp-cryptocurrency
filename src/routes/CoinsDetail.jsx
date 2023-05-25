@@ -30,8 +30,7 @@ const CoinsDetail = () => {
           </tr>
           <tr>
             <td>
-              Current Price: $
-              &nbsp;
+              Current Price: &nbsp;$
               {handleFormatNumber(coin.priceUsd)}
               &nbsp;
               {handleFormatNumber(coin.changePercent24Hr)}

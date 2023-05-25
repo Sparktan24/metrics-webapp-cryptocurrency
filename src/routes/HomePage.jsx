@@ -38,11 +38,14 @@ const HomePage = () => {
               Rank:
               {coin.rank}
               <br />
-              {coin.name}
+              <span className="home-coin-name">
+                {coin.name}
+              </span>
               <br />
               Price:
               $
               {parseFloat(coin.priceUsd).toFixed(2)}
+              usd
             </NavLink>
           </li>
         ))}

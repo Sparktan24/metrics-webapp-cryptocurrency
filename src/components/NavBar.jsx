@@ -7,7 +7,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   return (
     <nav className="nav-bar">
-      <div>
+      <div className="nav-div">
         <NavLink to="/HomePage" onClick={() => dispatch(resetCoins())}>
           <img src={backArrow} className="backArrow" alt="back arrow" />
         </NavLink>
