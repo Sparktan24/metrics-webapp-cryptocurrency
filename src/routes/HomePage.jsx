@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { filterCoin, sortByPrice, sortByRank } from '../redux/coins/coinsSlice';
+import rightArrow from '../styles/arrow_circle_right.png';
 
 const HomePage = () => {
   const { coinsList } = useSelector((store) => store.coins);
@@ -31,6 +32,7 @@ const HomePage = () => {
         <ul className="grid-container">
           {currentItems.map((coin) => (
             <li key={coin.id} className="li-home-page">
+              <img className="right-arrow" src={rightArrow} alt="arrow pointing to right" />
               <NavLink
                 to="/CoinsDetail"
                 onClick={() => dispatch(filterCoin(coin.id))}
